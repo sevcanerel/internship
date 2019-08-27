@@ -7,3 +7,4 @@ In order to see the outcome of this project :
 2. Run the libraryApplication.java file as a java application. It will run on  localhost:8080.
 3. run "npm start" command from your cmd while the current directory is newLibrary/vueapp.(you should have nodejs installed on your computer.)</br>
 4.The application will start running on localhost:8081.
+P.S:For database use mysql the information about the database is in newLibrary-resources-application.properties
