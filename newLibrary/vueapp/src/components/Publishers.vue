@@ -271,7 +271,7 @@
                           <br />
                         <p>
                           <img
-                            :src="'http://localhost:8080/RestC/download/' + book.bookImg"
+                            :src="'http://localhost:8090/RestC/download/' + book.bookImg"
                             style="height:100px;width:140px;"
                           />
                         </p>
@@ -366,7 +366,7 @@ export default {
     },
     publisherBooks: function(id, name) {
       this.$http
-        .get("http://localhost:8080/RestC/PublishersBooks/" + id.toString())
+        .get("http://localhost:8090/RestC/PublishersBooks/" + id.toString())
         .then(response => {
           this.allBooks = response.data;
           this.publisherHeader = name;
@@ -385,7 +385,7 @@ export default {
     },
     publisherAuthors: function(id, name) {
       this.$http
-        .get("http://localhost:8080/RestC/PublishersAuthors/" + id.toString())
+        .get("http://localhost:8090/RestC/PublishersAuthors/" + id.toString())
         .then(response => {
           this.allAuthors = response.data;
           this.publisherHeader = name;
@@ -432,7 +432,7 @@ export default {
       this.hide = false;
       this.show = false;
       this.$http
-        .get("http://localhost:8080/RestC/orderPublishersByName")
+        .get("http://localhost:8090/RestC/orderPublishersByName")
         .then(response => {
           this.allPublishers = response.data;
           var deneme = JSON.stringify(response.data);
@@ -466,7 +466,7 @@ export default {
       };
       var publishersAll = {};
       this.$http
-        .get("http://localhost:8080/RestC/getAllPublishers")
+        .get("http://localhost:8090/RestC/getAllPublishers")
         .then(response => {
           this.publishersAll = response.data;
           for (var i = 0; i < this.publishersAll.length; i++) {
@@ -492,7 +492,7 @@ export default {
             if (!this.warning) {
               this.submitted = false;
               this.$http
-                .post("http://localhost:8080/RestC/addNewPublisher", data)
+                .post("http://localhost:8090/RestC/addNewPublisher", data)
                 .then(response => {
                   console.log(response.data);
                   this.showPublishers();
@@ -511,7 +511,7 @@ export default {
     deletePublisher: function(id) {
       this.$http
         .delete(
-          "http://localhost:8080/RestC/deletePublisherById/" + id.toString()
+          "http://localhost:8090/RestC/deletePublisherById/" + id.toString()
         )
         .then(response => {
           console.log(response.data);
@@ -553,7 +553,7 @@ export default {
           this.edited = false;
           this.$http
             .put(
-              "http://localhost:8080/RestC/uptadePublisher/" + id.toString(),
+              "http://localhost:8090/RestC/uptadePublisher/" + id.toString(),
               data
             )
             .then(response => {

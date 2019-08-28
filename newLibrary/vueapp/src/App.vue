@@ -1,5 +1,6 @@
 <template>
   <v-app style="background-color:#E0E0E0">
+  
     <div >
       <v-app-bar color="teal lighten-1" dark>
         <v-toolbar-title style="font-weight:bold;">{{pageTitle}}</v-toolbar-title>
@@ -60,6 +61,7 @@ export default {
           },
           
         ],
+       
       booksPage: false,
       authorsPage: false,
       publishersPage: false,
@@ -71,6 +73,7 @@ export default {
       Publishers:"Publishers",
       Authors:"Authors",
       back:false,
+  
       pictures:true
 
     };
@@ -129,4 +132,5 @@ this.pictures=false;
 </script>
 
 <style>
+
 </style>

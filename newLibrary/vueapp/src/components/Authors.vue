@@ -172,7 +172,7 @@
                           <br />
                           <div style="text-align:center">
                             <img
-                              :src="'http://localhost:8080/RestC/download/' + book.bookImg"
+                              :src="'http://localhost:8090/RestC/download/' + book.bookImg"
                               style="height:100px;width:140px;"
                             />
                           </div>
@@ -249,7 +249,7 @@ export default {
       this.hide = false;
       this.show = false;
       this.$http
-        .get("http://localhost:8080/RestC/orderAuthorsByName")
+        .get("http://localhost:8090/RestC/orderAuthorsByName")
         .then(response => {
           this.allAuthors = response.data;
           var deneme = JSON.stringify(response.data);
@@ -274,7 +274,7 @@ export default {
       this.displayBooks = true;
       this.authorName = firstName + " " + lastName;
       this.$http
-        .get("http://localhost:8080/RestC/AuthorsBooks/" + id.toString())
+        .get("http://localhost:8090/RestC/AuthorsBooks/" + id.toString())
         .then(response => {
           this.allBooks = response.data;
           var deneme = JSON.stringify(response.data);
@@ -321,7 +321,7 @@ export default {
       };
 
       this.$http
-        .get("http://localhost:8080/RestC/getAllAuthors")
+        .get("http://localhost:8090/RestC/getAllAuthors")
         .then(response => {
           this.authorsAll = response.data;
           for (var i = 0; i < this.authorsAll.length; i++) {
@@ -349,7 +349,7 @@ export default {
               this.add = true;
               this.submitted = false;
               this.$http
-                .post("http://localhost:8080/RestC/addNewAuthor", data)
+                .post("http://localhost:8090/RestC/addNewAuthor", data)
                 .then(response => {
                   console.log(response.data);
                   this.showAuthors();
@@ -385,7 +385,7 @@ export default {
           this.edited = false;
           this.$http
             .put(
-              "http://localhost:8080/RestC/uptadeAuthorById/" + id.toString(),
+              "http://localhost:8090/RestC/uptadeAuthorById/" + id.toString(),
               data
             )
             .then(response => {
@@ -402,7 +402,7 @@ export default {
     deleteAuthor: function(id) {
       this.noAuthors = false;
       this.$http
-        .delete("http://localhost:8080/RestC/deleteAuthorById/" + id.toString())
+        .delete("http://localhost:8090/RestC/deleteAuthorById/" + id.toString())
         .then(response => {
           console.log(response.data);
           this.showAuthors();

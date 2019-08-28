@@ -60,7 +60,7 @@
                   <br />
                 <div style="text-align:center;">
                   <img
-                    :src="'http://localhost:8080/RestC/download/' + book.bookImg+ '?' + Date.now()"
+                    :src="'http://localhost:8090/RestC/download/' + book.bookImg+ '?' + Date.now()"
                     style="height:140px;width:170px;"
                   />
                 </div>
@@ -129,7 +129,7 @@
                              <div style="text-align:center; padding-top:10px; margin-left:5px; margin-right:5px;"> <h2 style="font-style:italic;  color:#8D6E63; display:inline">{{book.title}}</h2></div>
                   <br />
                             <img
-                              :src="'http://localhost:8080/RestC/download/' + book.bookImg"
+                              :src="'http://localhost:8090/RestC/download/' + book.bookImg"
                               style="height:100px;width:140px;"
                             /></div>
                          Price:
@@ -334,7 +334,7 @@
             <img
               style=" height:100px; width: 130px;background-color: white;border: 1px solid #DDD;padding: 5px;"
               class="preview"
-              :src="'http://localhost:8080/RestC/download/' + book.bookImg+ '?' + Date.now()"
+              :src="'http://localhost:8090/RestC/download/' + book.bookImg+ '?' + Date.now()"
             />
           </div>
           <div class="view" v-if="imageData.length > 0">
@@ -486,7 +486,7 @@ export default {
     },
     CategoryBooks: function(cat) {
       this.$http
-        .get("http://localhost:8080/RestC/CategoryBooks/" + cat)
+        .get("http://localhost:8090/RestC/CategoryBooks/" + cat)
         .then(response => {
           this.allCatBooks = response.data;
           this.seeBooks = true;
@@ -537,7 +537,7 @@ export default {
     showBooks: function() {
       if (this.whichOrder == false) {
         this.$http
-          .get("http://localhost:8080/RestC/orderBooksByName")
+          .get("http://localhost:8090/RestC/orderBooksByName")
           .then(response => {
             this.hide = false;
             this.order = true;
@@ -556,7 +556,7 @@ export default {
           });
       } else {
         this.$http
-          .get("http://localhost:8080/RestC/orderBooksByPrice")
+          .get("http://localhost:8090/RestC/orderBooksByPrice")
           .then(response => {
             this.hide = false;
             this.order = true;
@@ -581,7 +581,7 @@ export default {
       this.show = false;
       if (this.whichOrder == false) {
         this.$http
-          .get("http://localhost:8080/RestC/orderBooksByPrice")
+          .get("http://localhost:8090/RestC/orderBooksByPrice")
           .then(response => {
             this.allBooks = response.data;
             this.cat = true;
@@ -593,7 +593,7 @@ export default {
           });
       } else {
         this.$http
-          .get("http://localhost:8080/RestC/orderBooksByName")
+          .get("http://localhost:8090/RestC/orderBooksByName")
           .then(response => {
             this.allBooks = response.data;
             this.cat = true;
@@ -608,10 +608,10 @@ export default {
     deleteBook: function(id, name) {
       this.order = false;
       this.$http
-        .delete("http://localhost:8080/RestC/deleteBookById/" + id.toString())
+        .delete("http://localhost:8090/RestC/deleteBookById/" + id.toString())
         .then(response => {
           this.$http
-            .delete("http://localhost:8080/RestC/deleteFile/" + name + ".jpg")
+            .delete("http://localhost:8090/RestC/deleteFile/" + name + ".jpg")
             .then(response => {
               console.log(response);
             })
@@ -657,7 +657,7 @@ export default {
       this.idVar = id;
 
       this.$http
-        .get("http://localhost:8080/RestC/getAllAuthors")
+        .get("http://localhost:8090/RestC/getAllAuthors")
         .then(response => {
           this.allAuthors = response.data;
         })
@@ -665,7 +665,7 @@ export default {
           console.log(err);
         });
       this.$http
-        .get("http://localhost:8080/RestC/getAllPublishers")
+        .get("http://localhost:8090/RestC/getAllPublishers")
         .then(response => {
           this.allPublishers = response.data;
         })
@@ -687,7 +687,7 @@ export default {
       };
       this.imageData = "";
       this.$http
-        .get("http://localhost:8080/RestC/getAllAuthors")
+        .get("http://localhost:8090/RestC/getAllAuthors")
         .then(response => {
           this.allAuthors = response.data;
         })
@@ -695,7 +695,7 @@ export default {
           console.log(err);
         });
       this.$http
-        .get("http://localhost:8080/RestC/getAllPublishers")
+        .get("http://localhost:8090/RestC/getAllPublishers")
         .then(response => {
           this.allPublishers = response.data;
         })
@@ -743,7 +743,7 @@ export default {
       formData.append("file", fileTemp);
       var theBooks = {};
       this.$http
-        .get("http://localhost:8080/RestC/getAllBooks")
+        .get("http://localhost:8090/RestC/getAllBooks")
         .then(response => {
           this.theBooks = response.data;
           if (
@@ -792,7 +792,7 @@ export default {
 
           if (!this.warning && !this.wrong && !this.notnum) {
             this.$http
-              .post("http://localhost:8080/RestC/addNewBook", data)
+              .post("http://localhost:8090/RestC/addNewBook", data)
               .then(response => {
                 console.log(response.data);
 
@@ -800,7 +800,7 @@ export default {
                   this.wrong = true;
                 } else {
                   this.$http
-                    .post("http://localhost:8080/RestC/upload-file", formData, {
+                    .post("http://localhost:8090/RestC/upload-file", formData, {
                       header
                     })
                     .then(response => {
@@ -855,7 +855,7 @@ export default {
       var theBooks = {};
 
       this.$http
-        .get("http://localhost:8080/RestC/getAllBooks")
+        .get("http://localhost:8090/RestC/getAllBooks")
         .then(response => {
           this.theBooks = response.data;
           var i = 0;
@@ -891,7 +891,7 @@ export default {
             this.edited = false;
             this.$http
               .put(
-                "http://localhost:8080/RestC/uptadeBookById/" + id.toString(),
+                "http://localhost:8090/RestC/uptadeBookById/" + id.toString(),
                 data
               )
               .then(response => {
@@ -900,7 +900,7 @@ export default {
                 this.book.bookImg = this.book.title + ".jpg";
                 this.$http
                   .put(
-                    "http://localhost:8080/RestC/changeFileName/" +
+                    "http://localhost:8090/RestC/changeFileName/" +
                       this.booksTitle +
                       ".jpg" +
                       "/" +
@@ -930,7 +930,7 @@ export default {
 
                       this.$http
                         .delete(
-                          "http://localhost:8080/RestC/deleteFile/" +
+                          "http://localhost:8090/RestC/deleteFile/" +
                             this.book.title +
                             ".jpg"
                         )
@@ -938,7 +938,7 @@ export default {
                           console.log(response);
                           this.$http
                             .post(
-                              "http://localhost:8080/RestC/upload-file",
+                              "http://localhost:8090/RestC/upload-file",
                               formData,
                               {
                                 header
