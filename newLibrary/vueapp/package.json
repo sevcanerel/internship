@@ -18,7 +18,7 @@
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.7",
     "vue2-datepicker": "^2.12.0",
-    "vuetify": "^2.0.0"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
